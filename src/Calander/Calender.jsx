@@ -23,14 +23,14 @@ const Calender = () => {
   return (
     <div className='w-[97%] border border-[#8d99ae] h-screen m-auto'>
     <div className="flex w-[100%]  justify-between px-6 py-4 mb-3 border bg-[#003049]">
-        <button onClick={()=>navigate(`/${prevYear}/${prevMonth}`)} className='border px-3 py-1 bg-[#edf2f4] hover:bg-[#2b2d42] hover:text-[#edf2f4] rounded-xl flex items-center gap-2'><MdOutlineArrowBackIos/> Prev </button>
+        <button onClick={()=>navigate(`/${prevYear}/${prevMonth}`)} className='border px-3 py-1 bg-[#edf2f4] hover:bg-[#2b2d42] transition-all ease-in duration-300 hover:text-[#edf2f4] rounded-xl flex items-center gap-2'><MdOutlineArrowBackIos/> Prev </button>
         <h1 className='text-xl font-bold'>{months[month-1]}{" , "}{year}</h1>
-        <button onClick={()=>navigate(`/${nextYear}/${nextMonth}`)} className='flex items-center gap-2 border px-3 py-1 bg-[#edf2f4] hover:bg-[#2b2d42] hover:text-[#edf2f4] rounded-xl'>Next <MdOutlineArrowForwardIos/></button>
+        <button onClick={()=>navigate(`/${nextYear}/${nextMonth}`)} className='flex items-center gap-2 border px-3 py-1 bg-[#edf2f4] transition-all ease-in duration-300 hover:bg-[#2b2d42] hover:text-[#edf2f4] rounded-xl'>Next <MdOutlineArrowForwardIos/></button>
     </div>
     <div className="lg:w-[85%] h-screen md:w-[90%] sm:[95%] m-auto">
         <div className='w-full grid grid-cols-7 md:px-8 px-4 '>{days.map((e,i)=><div className="border flex py-2 justify-center items-center " key={i}>{e}</div>)}</div>
         {calender.map((week,i)=><div key={i} className='w-full grid grid-cols-7   md:px-8 px-4'>
-            {week.map((day,i)=><div key={i} className=' border lg:h-20 md:h-16 h-12 flex items-center justify-center cursor-pointer hover:bg-[#003049]' style={{backgroundColor:`${today(day)?"blue":""}`, color:`${today(day)?"white":"black"}`}}>
+            {week.map((day,i)=><div key={i} className=' border lg:h-20 md:h-16 h-12 flex items-center justify-center cursor-pointer hover:bg-[#003049] transition-all ease-in duration-300' style={{backgroundColor:`${today(day)?"blue":""}`, color:`${today(day)?"white":"black"}`}}>
                 {day.format("D").toString()}
 
             </div>)}
