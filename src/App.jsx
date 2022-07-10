@@ -12,13 +12,14 @@ function App() {
   return (
     <div >
       <Routes>
-        <Route path="/:year/:month" element={<ProtectedRoute>
+        <Route exact path="/:year/:month" element={<ProtectedRoute>
           <Suspense fallback={<div className="flex w-full justify-center items-center">Loading...</div>}>
         <Calender />
       </Suspense>
         </ProtectedRoute>}/>
         <Route path="/" element={<Welcome/>}/>
         <Route path="/404" element={<NotFound/>}/>
+        <Route path='*' exact={true} element={<NotFound/>} />
       </Routes>
     </div>
   );
