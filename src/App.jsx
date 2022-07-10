@@ -1,20 +1,25 @@
-import Calender from "./Calander/Calender";
+// import Calender from "./Calander/Calender";
 import {Route,Routes} from "react-router-dom"
-import React from "react";
+import React, { Suspense } from "react";
 import Welcome from "./Components/Welcome";
 import NotFound from "./Components/NotFound";
 import ProtectedRoute from "./Components/ProtectedRoute";
+const Calender = React.lazy(() => import("./Calander/Calender"));
+
 
 
 function App() {
   return (
     <div >
       <Routes>
-        <Route path="/:year/:month" element={<ProtectedRoute><Calender/></ProtectedRoute>}/>
+        <Route path="/:year/:month" element={<ProtectedRoute>
+          <Suspense fallback={<div className="flex w-full justify-center items-center">Loading...</div>}>
+        <Calender />
+      </Suspense>
+        </ProtectedRoute>}/>
         <Route path="/" element={<Welcome/>}/>
         <Route path="/404" element={<NotFound/>}/>
       </Routes>
-    
     </div>
   );
 }
